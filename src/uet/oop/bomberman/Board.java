@@ -15,7 +15,9 @@ import uet.oop.bomberman.level.FileLevelLoader;
 import uet.oop.bomberman.level.LevelLoader;
 import uet.oop.bomberman.sound.GameSound;
 
+import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -88,8 +90,13 @@ public class Board implements IRender {
 	}
 	
 	public void nextLevel() {
-		loadLevel(_levelLoader.getLevel() + 1);
-		GameSound.getIstance().getAudio(GameSound.WIN).play();
+		try{
+			loadLevel(_levelLoader.getLevel() + 1);
+			GameSound.getIstance().getAudio(GameSound.WIN).play();
+		}
+		catch (Exception e){
+			System.out.println("End game");
+		}
 	}
 	
 	public void loadLevel(int level) {

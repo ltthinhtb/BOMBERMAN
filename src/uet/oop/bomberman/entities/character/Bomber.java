@@ -154,10 +154,11 @@ public class Bomber extends Character {
         // TODO: xử lý nhận tín hiệu điều khiển hướng đi từ _input và gọi move() để thực hiện di chuyển
         // TODO: nhớ cập nhật lại giá trị cờ _moving khi thay đổi trạng thái di chuyển
         int xa = 0, ya = 0;
-        if(_input.up) ya--;
-        if(_input.down) ya++;
-        if(_input.left) xa--;
-        if(_input.right) xa++;
+        if(_input.up || _input.W) ya--;
+        if(_input.down || _input.S) ya++;
+        if(_input.left || _input.A) xa--;
+        if(_input.right || _input.D) xa++;
+        if(_input.N) _board.nextLevel();
 
         if(xa != 0 || ya != 0)  {
             move(xa * Game.getBomberSpeed(), ya * Game.getBomberSpeed());
